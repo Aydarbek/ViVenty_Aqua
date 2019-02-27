@@ -1,0 +1,20 @@
+﻿@model ViVenty.Domain.Entities.Hsuit
+
+<div class="well">
+    <h3>
+        <strong>@Model.Name</strong>
+        <span class="pull-right label label-primary">@Model.Price.ToString("# руб")</span>
+    </h3>
+    <p><img src="~/Images/@Model.DefaultPhoto" width="200" height="300" /></p>
+
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.Id)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="В корзину" />
+        </div>
+    }
+    <span class="lead">@Model.Description</span>
+    <p>@Model.Category</p>
+</div>

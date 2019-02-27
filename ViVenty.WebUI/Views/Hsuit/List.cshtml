@@ -1,0 +1,21 @@
+﻿@using ViVenty.WebUI.Models
+@using ViVenty.WebUI.HtmlHelpers;
+@model ViventyListViewModel
+
+@{
+    ViewBag.Title = "ViVenty Aqua Web Store";
+}
+
+
+
+@foreach (var p in @Model.Hsuits)
+{
+    @Html.Partial("HsuitSummary", p)
+}
+
+<div class="btn-group pull-left">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>
+
+
+

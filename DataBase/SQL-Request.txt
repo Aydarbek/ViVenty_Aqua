@@ -1,0 +1,23 @@
+
+
+
+SELECT Hsuits.Id, Hsuits.Name, Photos.PhotoId,Photos.Path
+FROM Hsuits 
+    JOIN Photos
+	ON Photos.hsuit_Id = Hsuits.Id
+ORDER BY Photos.PhotoId;
+
+
+SELECT Hsuits.Id, Hsuits.Name, Categories.CategoryId, Categories.Name
+FROM Hsuits 
+    JOIN Categories
+	ON Categories.CategoryId = Hsuits.Category_CategoryId
+ORDER BY Categories.CategoryId;
+
+
+SELECT Id, Name, Description, Size, Price, Category_CategoryId 
+FROM Hsuits ORDER BY Price DESC;
+
+
+SELECT Id, Name, Description, Size, Price, Category_CategoryId 
+FROM Hsuits WHERE Id = '1';
