@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using ViVenty.Domain.Abstract;
-using ViVenty.Domain.Concrete;
 using ViVenty.Domain.Entities;
+using ViVenty.WebUI.Models;
 
 namespace ViVenty.WebUI.Controllers
 {
@@ -17,36 +14,36 @@ namespace ViVenty.WebUI.Controllers
         {
             repository = repo;
         }
-
-        public RedirectToRouteResult AddToCart(int HsuitId, string returnUrl)
+        public ViewResult Index(Cart cart, string returnUrl)
         {
-            Hsuit hsuit = repository.Hsuits.FirstOrDefault(h => h.Id == HsuitId);
+            return View(new CartIndexViewModel
+            { Cart = cart, ReturnUrl = returnUrl});
+        }
+
+        public RedirectToRouteResult AddToCart(Cart cart, int Id, string returnUrl)
+        {
+            Hsuit hsuit = repository.Hsuits.FirstOrDefault(h => h.Id == Id);
 
             if (hsuit != null)
-                GetCart().AddItem(hsuit, 1);
+                cart.AddItem(hsuit, 1);
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoveFromCart(int HsuitId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int Id, string returnUrl)
         {
-            Hsuit hsuit = repository.Hsuits.FirstOrDefault(h => h.Id == HsuitId);
+            Hsuit hsuit = repository.Hsuits.FirstOrDefault(h => h.Id == Id);
 
             if (hsuit != null)
-                GetCart().RemoveLine(hsuit);
+                cart.RemoveLine(hsuit);
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public Cart GetCart()
+        public PartialViewResult Summary(Cart cart)
         {
-            Cart cart = (Cart)Session["Cart"];
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
+            return PartialView(cart);
         }
+
     }
 }

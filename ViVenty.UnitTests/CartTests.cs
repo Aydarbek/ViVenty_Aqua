@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using Moq;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.Mvc;
+using ViVenty.Domain.Abstract;
 using ViVenty.Domain.Entities;
+using ViVenty.WebUI.Controllers;
+using ViVenty.WebUI.Models;
 
 namespace ViVenty.UnitTests
 {
@@ -99,5 +101,73 @@ namespace ViVenty.UnitTests
             Assert.AreEqual(cart.Lines.Count(), 0);
 
         }
+
+        [TestMethod]
+        public void Can_Add_To_Cart()
+        {
+            //Setup - creation of repository imitation (Mock)
+
+            Mock<IViventyRepository> mock = new Mock<IViventyRepository>();
+            mock.Setup(h => h.Hsuits).Returns(new List<Hsuit>
+            {
+                new Hsuit {Id = 1, Name = "Hsuit1", Category = "Cat1" }
+            }.AsQueryable);
+
+            //Setup - create of Cart and CartController
+
+            Cart cart = new Cart();
+            CartController controller = new CartController(mock.Object);
+
+            //Action - add element to cart
+
+            controller.AddToCart(cart, 1, null);
+
+            //Assert
+
+            Assert.AreEqual(cart.Lines.Count(), 1);
+            Assert.AreEqual(cart.Lines.ToList()[0].Hsuit.Id, 1);
+
+        }
+
+        [TestMethod]
+        public void Adding_Hsuit_To_Cart_Goes_To_Cart_Screen()
+        {
+            //Setup - Create of repository imitation, Cart, CartController
+
+            Mock<IViventyRepository> repo = new Mock<IViventyRepository>();
+            repo.Setup(h => h.Hsuits).Returns(new List<Hsuit>
+            {
+                new Hsuit {Id = 1, Name = "Hsuit1", Category = "cat1" }
+            }.AsQueryable());
+
+            Cart cart = new Cart();
+
+            CartController controller = new CartController(repo.Object);
+
+            // Action - Add object to cart
+            RedirectToRouteResult result = controller.AddToCart(cart, 1, "backToShop");
+
+            //Assert
+            Assert.AreEqual(result.RouteValues["Action"], "Index");
+            Assert.AreEqual(result.RouteValues["returnUrl"], "backToShop");
+        }
+
+        [TestMethod]
+        public void Can_View_Cart_Contents()
+        {
+            //Setup - create Cart and CartController
+            Cart cart = new Cart();
+            CartController controller = new CartController(null);
+
+            //Action - call of Index method
+
+            CartIndexViewModel result =
+                (CartIndexViewModel)controller.Index(cart, "backToShop").ViewData.Model;
+
+            //Assert
+            Assert.AreSame(result.Cart, cart);
+            Assert.AreEqual(result.ReturnUrl, "backToShop");
+        }
+
     }
 }

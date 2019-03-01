@@ -39,7 +39,7 @@ namespace ViVenty.UnitTests
 
             //Action
 
-            ViventyListViewModel result = (ViventyListViewModel)controller.List(null, 2).Model;
+            HsuitListViewModel result = (HsuitListViewModel)controller.List(null, 2).Model;
 
             //Assert
             List<Hsuit> hsuits = result.Hsuits.ToList();
@@ -101,7 +101,7 @@ namespace ViVenty.UnitTests
             controller.pageSize = 3;
 
             //Act
-            ViventyListViewModel result = (ViventyListViewModel)controller.List(null,2).Model;
+            HsuitListViewModel result = (HsuitListViewModel)controller.List(null,2).Model;
 
             //Assert
             PagingInfo pageInfo = result.PagingInfo;
@@ -129,7 +129,7 @@ namespace ViVenty.UnitTests
             controller.pageSize = 3;
 
             //Action
-            List<Hsuit> result = ((ViventyListViewModel)controller.List("Cat2", 1).Model).
+            List<Hsuit> result = ((HsuitListViewModel)controller.List("Cat2", 1).Model).
                 Hsuits.ToList();
 
             //Assert
@@ -194,10 +194,10 @@ namespace ViVenty.UnitTests
             HsuitController controller = new HsuitController(mock.Object);
             controller.pageSize = 3;
 
-            int result1 = ((ViventyListViewModel)(controller.List("Cat1")).Model).PagingInfo.TotalItems;
-            int result2 = ((ViventyListViewModel)(controller.List("Cat2")).Model).PagingInfo.TotalItems;
-            int result3 = ((ViventyListViewModel)(controller.List("Cat3")).Model).PagingInfo.TotalItems;
-            int resultAll = ((ViventyListViewModel)(controller.List(null)).Model).PagingInfo.TotalItems;
+            int result1 = ((HsuitListViewModel)(controller.List("Cat1")).Model).PagingInfo.TotalItems;
+            int result2 = ((HsuitListViewModel)(controller.List("Cat2")).Model).PagingInfo.TotalItems;
+            int result3 = ((HsuitListViewModel)(controller.List("Cat3")).Model).PagingInfo.TotalItems;
+            int resultAll = ((HsuitListViewModel)(controller.List(null)).Model).PagingInfo.TotalItems;
 
 
             Assert.AreEqual(result1, 3);

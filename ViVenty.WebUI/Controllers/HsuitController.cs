@@ -23,10 +23,8 @@ namespace ViVenty.WebUI.Controllers
 
         public ViewResult List(string category, int page = 1)
         {
-
-            ViventyListViewModel model = new ViventyListViewModel
+            HsuitListViewModel model = new HsuitListViewModel
             {
-
                 Hsuits = repository.
                 Hsuits.Where(p => category == null || p.Category == category).
                 OrderBy(hs => hs.Id).

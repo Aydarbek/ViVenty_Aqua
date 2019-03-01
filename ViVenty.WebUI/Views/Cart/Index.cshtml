@@ -1,0 +1,61 @@
+﻿@model ViVenty.WebUI.Models.CartIndexViewModel
+
+@{
+    ViewBag.Title = "Ваша корзина";
+}
+
+<style>
+    #cartTable td {vertical-align: middle;}
+</style>
+
+<h2>Ваша корзина</h2>
+
+<table id="cartTable" class="table">
+    <thead>
+        <tr>
+            <th>Модель</th>
+            <th>Кол-во</th>
+            <th class="text-right">Цена</th>
+            <th class="text-right">Общая цена</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var line in Model.Cart.Lines)
+    {
+        <tr>
+            <td class="text-left">@line.Hsuit.Name</td>
+            <td class="text-center">@line.Quantity</td>
+            <td class="text-right"> @line.Hsuit.Price.ToString("# руб")</td>
+            <td class="text-right">
+                @((line.Quantity * line.Hsuit.Price).ToString("# руб"))
+            </td>
+            <td>
+                @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                {
+                    @Html.Hidden("Id", line.Hsuit.Id)
+                    @Html.HiddenFor(x => x.ReturnUrl)
+                    <input type="submit" class="btn btn-sm btn-warning" value="Удалить" />
+                }
+            </td>
+
+        </tr>
+    }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right"><strong>Итого</strong></td>
+            <td class="text-right">
+                <strong>
+                    @Model.Cart.ComputeTotalValue().ToString("# руб")
+                </strong>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Продолжить покупки</a>
+</div>
+

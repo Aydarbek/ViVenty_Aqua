@@ -6,7 +6,7 @@ using ViVenty.Domain.Entities;
 
 namespace ViVenty.WebUI.Models
 {
-    public class ViventyListViewModel
+    public class HsuitListViewModel
     {
         public IEnumerable<Hsuit> Hsuits { get; set; }
         public PagingInfo PagingInfo { get; set; }
