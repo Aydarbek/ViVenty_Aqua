@@ -24,3 +24,4 @@ D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\bin\Debug\EntityFramework.SqlSe
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.Viventy_DB_v1.resources
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csproj.GenerateResource.Cache
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViventyDB_v2.resources
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViventyDB_v3.resources

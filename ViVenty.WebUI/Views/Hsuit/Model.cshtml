@@ -1,0 +1,33 @@
+﻿@model ViVenty.Domain.Entities.Hsuit
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="well">
+    <h3>
+        <strong>@Model.Name</strong>
+        <span class="pull-right label label-primary">@Model.Price.ToString("# руб")</span>
+    </h3>
+    <table>
+        <tr>
+            @foreach (var f in ViewBag.Photos)
+            {
+                <td><p><img src="~/Images/@f.Image" width="200" height="300" /></p></td>
+            }
+        </tr>
+    </table>
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        <span class="pull-right">
+            @Html.HiddenFor(x => x.Id)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="В корзину" />
+        </span>
+    }
+    <span class="lead">@Model.Description</span>
+    <a href="~/hsuit/@Model.Category"><p>@Model.Category</p></a>
+</div>
+
+

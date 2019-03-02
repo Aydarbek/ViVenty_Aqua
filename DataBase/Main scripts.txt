@@ -31,10 +31,27 @@ VALUES		('Марин', 'Хорошая модель для кайтинга', 7000, 'SpSuit_M1_front.jpg', 1)
 		('Волна', 'Изящный и яркий купальный костюм', 5000, 'SwSuit_S2_front.jpg', 2);
 
 
+
+CREATE TABLE Photos (
+Id INT NOT NULL IDENTITY (1,1) PRIMARY KEY,
+Image NVARCHAR(50) NOT NULL,
+hsuit_Id INT NOT NULL,
+FOREIGN KEY (hsuit_Id) REFERENCES Hsuits (Id));
+
+
+
+
+INSERT INTO Photos (Image, hsuit_Id)
+VALUES 
+('SpSuit_M1_front.jpg', 1), ('SpSuit_M1_back.jpg', 1),
+('SpSuit_M2_front.jpg', 2), ('SpSuit_M2_back.jpg', 2),
+('SpSuit_M3_front.jpg', 3), ('SpSuit_M3_back.jpg', 3),
+('SwSuit_S1_front.jpg', 4), ('SwSuit_S1_back.jpg', 4),
+('SwSuit_S2_front.jpg', 5), ('SwSuit_S2_back.jpg', 5);
+
+
 UPDATE Photos 
 SET hsuit_id = 2 WHERE PhotoId = 3 OR PhotoId = 5;
-
-
 
 
 
