@@ -9,6 +9,7 @@ using Ninject;
 using ViVenty.Domain.Abstract;
 using ViVenty.Domain.Entities;
 using ViVenty.Domain.Concrete;
+using System.Configuration;
 
 namespace ViVenty.WebUI.Infrastructure
 {
@@ -35,15 +36,16 @@ namespace ViVenty.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            Mock<IViventyRepository> mock = new Mock<IViventyRepository>();
-            mock.Setup(m => m.Hsuits).Returns(new List<Hsuit>
-            {
-                new Hsuit { Name = "Ариэль", Price = 7000 },
-                new Hsuit { Name = "Касатка", Price = 5500 },
-                new Hsuit {Name = "Волна", Price = 6000 }
-            });
-
             kernel.Bind<IViventyRepository>().To<EFViventyRepository>();
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager.
+                AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
+                .WithConstructorArgument("settings", emailSettings);
 
         }
     }

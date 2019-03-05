@@ -11,12 +11,15 @@ namespace ViVenty.Domain.Entities
     {
         [Required(ErrorMessage = "Укажите как вас зовут")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Укажите ваш номер телефона")]
+        public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Укажите ваш e-mail")]
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Укажите адрес доставки")]
-        public string Line1 { get; set; }
-        public string Line2 { get; set; }
-        public string Line3 { get; set; }
-        
-        [Required(ErrorMessage = "Укажите город")]
-        public string City { get; set; }
+        public string Address { get; set; }
+
     }
 }

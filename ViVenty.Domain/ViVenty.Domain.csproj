@@ -79,8 +79,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Concrete\EFViventyRepository.cs" />
     <Compile Include="Concrete\DBContext.cs" />
+    <Compile Include="Concrete\EmailOrderProcessor.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Hsuit.cs" />
     <Compile Include="Abstract\IViventyRepository.cs" />

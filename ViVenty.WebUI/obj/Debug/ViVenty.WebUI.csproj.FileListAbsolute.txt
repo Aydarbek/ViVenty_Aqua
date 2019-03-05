@@ -49,3 +49,10 @@ D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\bin\System.Web.Mvc.xml
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\obj\Debug\ViVenty.WebUI.csprojResolveAssemblyReference.cache
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\obj\Debug\ViVenty.WebUI.dll
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\obj\Debug\ViVenty.WebUI.pdb
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\bin\Microsoft.Owin.dll
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\bin\Microsoft.Owin.Security.dll
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\bin\Newtonsoft.Json.dll
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\bin\Owin.dll
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\bin\Microsoft.Owin.xml
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\bin\Microsoft.Owin.Security.xml
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.WebUI\bin\Newtonsoft.Json.xml

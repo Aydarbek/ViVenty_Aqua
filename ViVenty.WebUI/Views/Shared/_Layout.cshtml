@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse" role="navigation">
-        <a class="navbar-brand" href="/Home/Index">ViVenty Aqua Web Store</a>
+    <div class="navbar navbar-btn" role="navigation">      
+        <a class="navbar-brand" href="/Home/Index"><img src="~/Images/Logo_V.jpg" /></a>
+        <a class="navbar-brand" href="~/Hsuit/page1">Магазин</a>
+        <a class="navbar-brand">Отзывы</a>
+        <a class="navbar-brand">Контакты</a>
         @Html.Action("Summary", "Cart")
     </div>
-    <div class="row panel">
-        <div id="categories" class="col-xs-2">
-            @Html.Action("Menu", "Nav")
-        </div>
-        <div class="col-xs-3">
-            @RenderBody()
-        </div>
-    </div>
+    
+    @RenderBody()
+    
+
 </body>
 </html>

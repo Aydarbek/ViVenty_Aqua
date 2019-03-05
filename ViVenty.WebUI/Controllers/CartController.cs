@@ -9,10 +9,12 @@ namespace ViVenty.WebUI.Controllers
     public class CartController : Controller
     {
         private IViventyRepository repository;
+        private IOrderProcessor orderProcessor;
 
-        public CartController(IViventyRepository repo)
+        public CartController(IViventyRepository repo, IOrderProcessor processor)
         {
             repository = repo;
+            orderProcessor = processor;
         }
         public ViewResult Index(Cart cart, string returnUrl)
         {
@@ -43,6 +45,31 @@ namespace ViVenty.WebUI.Controllers
         public PartialViewResult Summary(Cart cart)
         {
             return PartialView(cart);
+        }
+
+        public ViewResult Checkout ()
+        {
+            return View(new ShippingDetails());
+        }
+
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (cart.Lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "Извините, ваша корзина пуста.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                orderProcessor.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }            
         }
 
     }
