@@ -145,6 +145,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\Logo_V.JPG" />
     <Content Include="Images\Main_Surfer.JPG" />
+    <Content Include="Images\Ocean_bright.JPG" />
     <Content Include="Images\SpSuit_M1_back.jpg" />
     <Content Include="Images\SpSuit_M1_front.jpg" />
     <Content Include="Images\SpSuit_M2_back.jpg" />

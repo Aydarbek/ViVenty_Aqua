@@ -10,13 +10,16 @@
     <div id="categories" class="col-xs-2">
         @Html.Action("Menu", "Nav")
     </div>
-    <div class="col-xs-3">
-
-        @foreach (var p in @Model.Hsuits)
-        {
-            @Html.Partial("HsuitSummary", p)
-        }
-    </div>
+    <table>
+        <tr>
+            @foreach (var p in Model.Hsuits)
+            { 
+                <td>
+                    @Html.Partial("HsuitSummary", p)
+                </td>
+            }
+        </tr>
+    </table>
 </div>
 
 

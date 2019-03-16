@@ -14,7 +14,7 @@ namespace ViVenty.WebUI.Controllers
         // GET: Hsuit
 
         private IViventyRepository repository;
-        public int pageSize { get; set; } = 3;
+        public int pageSize { get; set; } = 4;
 
         public HsuitController(IViventyRepository repoParam)
         {

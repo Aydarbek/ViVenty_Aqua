@@ -2445,6 +2445,12 @@ fieldset[disabled] .btn-warning.active {
   border-color: #d43f3a;
 }
 
+.btn-inverse {
+  color: white;
+  background-color: black;
+  border-color: white;
+}
+
 .btn-danger:hover,
 .btn-danger:focus,
 .btn-danger:active,
