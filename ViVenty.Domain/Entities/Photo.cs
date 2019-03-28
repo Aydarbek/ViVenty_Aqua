@@ -11,5 +11,6 @@ namespace ViVenty.Domain.Entities
         public int Id { get; set; }
         public string Image { get; set; }
         public virtual Hsuit hsuit { get; set; }
+        public int Nr { get; set; }
     }
 }

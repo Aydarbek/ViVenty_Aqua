@@ -9,16 +9,28 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
+
 <body>
-    <div class="navbar navbar-btn" role="navigation">      
-        <a class="navbar-brand" href="/Home/Index"><img src="~/Images/Logo_V.jpg" /></a>
-        <a class="navbar-brand" href="~/Hsuit/page1">Магазин</a>
-        <a class="navbar-brand">Отзывы</a>
-        <a class="navbar-brand">Контакты</a>
-        @Html.Action("Summary", "Cart")
-    </div>
-    
-    @RenderBody()    
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="nav navbar-brand">
+                <a href="/Home/Index">
+                <img class="logo" src="~/Images/Logo_V.jpg" height="80" />
+                </a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li class="menu_item"><a href="~/Hsuit/page1">Магазин</a></li>
+                <li class="menu_item"><a href="#">Отзывы</a></li>
+                <li class="menu_item"><a href="#">Контакты</a></li>
+            </ul>
+            <div class="pull-right">
+                @Html.Action("Summary", "Cart")
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
 
 </body>
 </html>

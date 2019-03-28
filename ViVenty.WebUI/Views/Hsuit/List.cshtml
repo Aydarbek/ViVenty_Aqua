@@ -6,24 +6,25 @@
     ViewBag.Title = "ViVenty Aqua Web Store";
 }
 
-<div class="row panel">
-    <div id="categories" class="col-xs-2">
+<div>
+    <div id="categories" class="col-md-2">
         @Html.Action("Menu", "Nav")
     </div>
-    <table>
-        <tr>
-            @foreach (var p in Model.Hsuits)
-            { 
-                <td>
-                    @Html.Partial("HsuitSummary", p)
-                </td>
-            }
-        </tr>
-    </table>
+
+    <div class="container-fluid col-md-10" style="display:flex">
+        @foreach (var p in Model.Hsuits)
+        {
+            <div class="col-md-3  well">
+                @Html.Partial("HsuitSummary", p)
+            </div>
+        }
+    </div>
 </div>
-
-
-
-<div class="btn-group pull-left">
+<div class="btn-group col-md-offset-6">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
 </div>
+
+
+
+
+

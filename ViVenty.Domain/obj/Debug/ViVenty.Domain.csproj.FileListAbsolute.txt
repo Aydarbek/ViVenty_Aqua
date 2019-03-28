@@ -25,3 +25,4 @@ D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrat
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csproj.GenerateResource.Cache
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViventyDB_v2.resources
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViventyDB_v3.resources
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViventyDB_v31.resources

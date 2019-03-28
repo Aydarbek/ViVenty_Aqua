@@ -1,20 +1,18 @@
 ﻿@model ViVenty.Domain.Entities.Hsuit
 
-<div class="well">
-    <h3>
-        <a href="model/@Model.Id"><strong>@Model.Name</strong></a>
-            <span class="pull-right label label-primary">@Model.Price.ToString("# руб")</span>
+<h3>
+    <a href="model/@Model.Id"><strong>@Model.Name</strong></a>
+    <span class="pull-right label label-primary">@Model.Price.ToString("# руб")</span>
 </h3>
-    <a href="model/@Model.Id"><img src="~/Images/@Model.DefaultPhoto" width="200" height="300" /></a>
+<a href="model/@Model.Id"><img src="~/Images/@Model.DefaultPhoto" width="200" height="300" /></a>
 
-    @using (Html.BeginForm("AddToCart", "Cart"))
-    {
-        <div class="pull-right">
-            @Html.HiddenFor(x => x.Id)
-            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="В корзину" />
-        </div>
-    }
-    <span class="lead">@Model.Description</span>
-    <a href="@Model.Category"><p>@Model.Category</p></a>
-</div>
+@using (Html.BeginForm("AddToCart", "Cart"))
+{
+    <div class="pull-right">
+        @Html.HiddenFor(x => x.Id)
+        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+        <input type="submit" class="btn btn-success" value="В корзину" />
+    </div>
+}
+<span class="lead">@Model.Description</span>
+<a href="@Model.Category"><p>@Model.Category</p></a>

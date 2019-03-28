@@ -8,4 +8,25 @@
     text-align:center;
 }
 
+.logo{
+    border: solid;
+    border-color: black;
+    border-width: thin;    
+}
+
+
+.navbar-brand {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+ul{
+    display: table-cell;
+    font-size: 24px;
+    padding-top: 25px;
+}
+
+
+
+
 
