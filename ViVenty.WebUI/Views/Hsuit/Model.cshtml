@@ -1,8 +1,12 @@
-﻿@model ViVenty.Domain.Entities.Hsuit
+﻿@using ViVenty.WebUI.Models
+
+@model HsuitDetailsModel
 
 @{
-    ViewBag.Title = Model.Name;
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = Model.Hsuit.Name;
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div id="categories" class="col-md-2">
@@ -12,35 +16,60 @@
 <div class="well col-md-4">
     <div>
         <h3>
-            <strong>@Model.Name</strong>
-            <span class="pull-right label label-primary">@Model.Price.ToString("# руб")</span>
-        </h3> 
+            <strong>@Model.Hsuit.Name</strong>
+            <span class="pull-right label label-primary">@Model.Hsuit.Price.ToString("# руб")</span>
+        </h3>
     </div>
     <div>
-        <p><img src="~/Images/@Model.DefaultPhoto" width="400" height="600" /></p>
+        <p><img src="~/Images/@Model.MainPhoto.Image" width="400" height="600" /></p>
     </div>
     @using (Html.BeginForm("AddToCart", "Cart"))
-        {
+    {
         <div class="pull-right">
-            @Html.HiddenFor(x => x.Id)
+            @Html.Hidden("Id", Model.Hsuit.Id)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="В корзину" />
+            <input type="submit" class="btn btn-primary" value="Bucket" style="font-size:32px; color:yellow;font:bold" />
         </div>
-        }
+    }
     <div>
-        <span class="lead">@Model.Description</span>
-        <a href="~/hsuit/@Model.Category"><p>@Model.Category</p></a>
+        <span class="lead">@Model.Hsuit.Description</span>
+        <a href="~/hsuit/@Model.Hsuit.Category"><p>@Model.Hsuit.Category</p></a>
     </div>
-    <div class="col-md-6 col-md-offset-2 container-fluid">
-        @foreach (var f in ViewBag.Photos)
+</div>
+
+<div class="col-md-1">
+    @foreach (var f in Model.Photos)
+    {
+        if (@f.Nr == Model.MainPhoto.Nr)
         {
-            <div class="col-md-6">
-                <img src="~/Images/@f.Image" width="100" height="150" />
+            <div style="border:solid;border-width:2px;border-color:lightgreen;">
+                <a href="~/hsuit/model/@Model.Hsuit.Id/@f.Nr"><img style="margin:5px" src="~/Images/@f.Image" width="98" height="149" /></a>
             </div>
         }
-    </div>
 
+        else
+        {
+            <div>
+                <a href="~/hsuit/model/@Model.Hsuit.Id/@f.Nr"><img style="margin:5px" src="~/Images/@f.Image" width="98" height="149" /></a>
+            </div>
+        }
+
+    }
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -23,6 +23,12 @@ namespace ViVenty.WebUI
 
             routes.MapRoute(
                 name: null,
+                url: "hsuit/Model/{Id}/{Nr}",
+                defaults: new { controller = "Hsuit", action = "Model", Nr = 0 }
+                 );
+
+            routes.MapRoute(
+                name: null,
                 url: "hsuit/Page{page}",
                 defaults: new { controller = "Hsuit", action = "List", category = (string)null },
                 constraints: new {page = @"\d+"}

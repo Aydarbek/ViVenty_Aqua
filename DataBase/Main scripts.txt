@@ -72,3 +72,5 @@ Size VARCHAR (10),
 Price INT NOT NULL,
 Default_photo VARCHAR (128),
 FOREIGN KEY (Category) REFERENCES Categories (Id));
+
+

@@ -13,7 +13,6 @@ D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\bin\Debug\System.Web.Razor.xml
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\bin\Debug\System.Web.WebPages.xml
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csprojResolveAssemblyReference.cache
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.dll
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.pdb
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\bin\Debug\ViVenty.Domain.dll.config
@@ -26,3 +25,6 @@ D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csproj
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViventyDB_v2.resources
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViventyDB_v3.resources
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViventyDB_v31.resources
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csprojAssemblyReference.cache
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csproj.CopyComplete

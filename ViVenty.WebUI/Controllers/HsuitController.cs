@@ -45,13 +45,16 @@ namespace ViVenty.WebUI.Controllers
             return View(model);
         }
 
-        public ViewResult Model(int Id)
+        public ViewResult Model(int Id, int Nr = 0)
         {
-            Hsuit hsuit = repository.Hsuits.First(h => h.Id == Id);
-            IEnumerable<Photo> Photos = repository.Photos.Where(f => f.hsuit.Id == Id);
-            ViewBag.Photos = Photos;
+            HsuitDetailsModel HsuitModel = new HsuitDetailsModel
+            {
+                Hsuit = repository.Hsuits.First(h => h.Id == Id),
+                Photos = repository.Photos.Where(f => f.hsuit.Id == Id),
+                MainPhoto = repository.Photos.First(p => p.hsuit.Id == Id & p.Nr == Nr)
+            };
 
-            return View(hsuit);
+            return View(HsuitModel);
         }
     }
 }

@@ -34,8 +34,6 @@ SET hsuit_id = 2 WHERE PhotoId = 3 OR PhotoId = 5;
 
 
 
-
-
 CREATE TABLE Categories (
 Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 Name NVARCHAR(16) NOT NULL,
@@ -53,3 +51,12 @@ Size VARCHAR (10),
 Price INT NOT NULL,
 Default_photo VARCHAR (128),
 FOREIGN KEY (Category) REFERENCES Categories (Id));
+
+
+
+
+
+
+
+
+
