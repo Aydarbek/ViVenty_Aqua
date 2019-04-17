@@ -1,2 +1,3 @@
 Косяки.txt
-\ViVenty.Domain\Concrete\EmailOrderProcessor.cs
+ViVenty.Domain/Concrete/EmailOrderProcessor.cs
+ViVenty.WebUI\Web.config

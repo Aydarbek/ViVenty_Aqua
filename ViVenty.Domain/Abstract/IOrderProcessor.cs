@@ -10,5 +10,7 @@ namespace ViVenty.Domain.Abstract
     public interface IOrderProcessor
     {
         void ProcessOrder(Cart cart, ShippingDetails shippingDetails);
+        int OrderId { get; set; }
+        
     }
 }

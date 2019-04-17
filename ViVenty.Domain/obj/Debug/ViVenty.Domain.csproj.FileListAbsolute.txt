@@ -28,3 +28,5 @@ D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrat
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csprojAssemblyReference.cache
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csproj.CoreCompileInputs.cache
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.csproj.CopyComplete
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViVentyDB_v4.resources
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.Domain\obj\Debug\ViVenty.Domain.Migrations.ViVentyDB_v41.resources

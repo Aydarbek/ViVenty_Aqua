@@ -26,5 +26,22 @@ namespace ViVenty.Domain.Concrete
                 return context.Photos;
             }
         }
+
+        public IEnumerable<Order> Orders
+        {
+            get
+            {
+                return context.Orders;
+            }           
+        }
+
+        public void AddOrder (Order order)
+        {
+            if (order != null)
+            {
+                context.Orders.Add(order);
+                context.SaveChanges();
+            }
+        }
     }
 }

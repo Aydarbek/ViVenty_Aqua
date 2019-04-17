@@ -63,7 +63,8 @@ namespace ViVenty.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 orderProcessor.ProcessOrder(cart, shippingDetails);
-                cart.Clear();
+                ViewBag.Id = orderProcessor.OrderId;
+                cart.Clear();                
                 return View("Completed");
             }
             else

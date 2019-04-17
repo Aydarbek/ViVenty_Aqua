@@ -21,5 +21,6 @@ namespace ViVenty.Domain.Concrete
 
         public virtual DbSet<Hsuit> Hsuits { get; set; }
         public virtual DbSet<Photo> Photos { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

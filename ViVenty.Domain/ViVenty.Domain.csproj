@@ -86,6 +86,7 @@
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Hsuit.cs" />
     <Compile Include="Abstract\IViventyRepository.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Photo.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Migrations\201902212121564_Viventy_DB_v1.cs" />
@@ -103,6 +104,14 @@
     <Compile Include="Migrations\201903280705372_ViventyDB_v3.1.cs" />
     <Compile Include="Migrations\201903280705372_ViventyDB_v3.1.Designer.cs">
       <DependentUpon>201903280705372_ViventyDB_v3.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904162009555_ViVentyDB_v4.cs" />
+    <Compile Include="Migrations\201904162009555_ViVentyDB_v4.Designer.cs">
+      <DependentUpon>201904162009555_ViVentyDB_v4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904162033415_ViVentyDB_v4.1.cs" />
+    <Compile Include="Migrations\201904162033415_ViVentyDB_v4.1.Designer.cs">
+      <DependentUpon>201904162033415_ViVentyDB_v4.1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903280705372_ViventyDB_v3.1.resx">
       <DependentUpon>201903280705372_ViventyDB_v3.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904162009555_ViVentyDB_v4.resx">
+      <DependentUpon>201904162009555_ViVentyDB_v4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904162033415_ViVentyDB_v4.1.resx">
+      <DependentUpon>201904162033415_ViVentyDB_v4.1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

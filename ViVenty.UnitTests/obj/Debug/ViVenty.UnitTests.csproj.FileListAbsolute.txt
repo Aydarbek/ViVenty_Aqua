@@ -43,8 +43,12 @@ D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\bin\Debug\System.Web.Razor.x
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\bin\Debug\System.Web.WebPages.xml
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\obj\Debug\ViVenty.UnitTests.csprojResolveAssemblyReference.cache
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\obj\Debug\ViVenty.UnitTests.dll
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\obj\Debug\ViVenty.UnitTests.pdb
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\bin\Debug\EntityFramework.dll
 D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\bin\Debug\EntityFramework.xml
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\bin\Debug\ViVenty.Domain.dll.config
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\bin\Debug\ViVenty.WebUI.dll.config
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\obj\Debug\ViVenty.UnitTests.csprojAssemblyReference.cache
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\obj\Debug\ViVenty.UnitTests.csproj.CoreCompileInputs.cache
+D:\Projects\ASP.NET\ViVenty_Store\ViVenty.UnitTests\obj\Debug\ViVenty.UnitTests.csproj.CopyComplete
