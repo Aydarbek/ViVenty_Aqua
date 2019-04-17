@@ -7,10 +7,9 @@ using ViVenty.Domain.Entities;
 
 namespace ViVenty.Domain.Abstract
 {
-    public interface IOrderProcessor
+    public interface IEmailService
     {
-        void ProcessOrder(Cart cart, ShippingDetails shippingDetails);
-        Order order { get; set; }
-        
+        void SendOrderDetailsToAdmin(Cart cart, Order order);
+        void SendOrderDetailsToClient(Cart cart, Order order);
     }
 }

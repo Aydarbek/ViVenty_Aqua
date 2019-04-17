@@ -38,14 +38,15 @@ namespace ViVenty.WebUI.Infrastructure
         {
             kernel.Bind<IViventyRepository>().To<EFViventyRepository>();
 
-            EmailSettings emailSettings = new EmailSettings
-            {
-                WriteAsFile = bool.Parse(ConfigurationManager.
-                AppSettings["Email.WriteAsFile"] ?? "false")
-            };
+            /*           EmailSettings emailSettings = new EmailSettings
+                       {
+                           WriteAsFile = bool.Parse(ConfigurationManager.
+                           AppSettings["Email.WriteAsFile"] ?? "false")
+                       }; */
 
-            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>()
-                .WithConstructorArgument("settings", emailSettings);
+            kernel.Bind<IEmailService>().To<EmailService>();
+
+            kernel.Bind<IOrderProcessor>().To<OrderProcessor>();
 
         }
     }

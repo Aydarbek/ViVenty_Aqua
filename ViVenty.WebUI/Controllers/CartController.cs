@@ -10,11 +10,13 @@ namespace ViVenty.WebUI.Controllers
     {
         private IViventyRepository repository;
         private IOrderProcessor orderProcessor;
+        private IEmailService emailService;
 
-        public CartController(IViventyRepository repo, IOrderProcessor processor)
+        public CartController(IViventyRepository repo, IOrderProcessor processor, IEmailService email)
         {
             repository = repo;
             orderProcessor = processor;
+            emailService = email;
         }
         public ViewResult Index(Cart cart, string returnUrl)
         {
@@ -63,7 +65,10 @@ namespace ViVenty.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 orderProcessor.ProcessOrder(cart, shippingDetails);
-                ViewBag.Id = orderProcessor.OrderId;
+                ViewBag.Id = orderProcessor.order.Id;
+
+                emailService.SendOrderDetailsToAdmin(cart, orderProcessor.order);
+                emailService.SendOrderDetailsToClient(cart, orderProcessor.order);
                 cart.Clear();                
                 return View("Completed");
             }
