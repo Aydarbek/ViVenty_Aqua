@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Net.Configuration;
 using ViVenty.Domain.Abstract;
 using ViVenty.Domain.Entities;
 
@@ -15,16 +17,20 @@ namespace ViVenty.Domain.Concrete
         private MailAddress MailTo;
         private MailAddress MailFrom;
         private string MailSubject;
-        
+
 
         public void SendOrderDetailsToAdmin(Cart cart, Order order)
         {
-            MailTo = new MailAddress("aidar_ahmetshin@mail.ru", "Admin");
-            MailFrom = new MailAddress("a88236@gmail.com", "ViVenty Aqua Web Store");
-            MailSubject = "Получен заказ № " + order.Id.ToString();
-
-            using (var smtpClient = new SmtpClient())
+            using (SmtpClient smtpClient = new SmtpClient())
             {
+                var smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
+                smtpClient.Credentials = new NetworkCredential(smtpSection.Network.UserName, smtpSection.Network.Password);
+
+                MailTo = new MailAddress("a88236 @gmail.com", "Admin");
+                MailFrom = new MailAddress("aidar_ahmetshin@mail.ru", "ViVenty Aqua Web Store");
+                MailSubject = "Получен заказ № " + order.Id.ToString();
+
+
                 StringBuilder body = new StringBuilder().
                     AppendLine("Новый заказ обработан").
                     AppendLine("----------------------------------------").
@@ -33,11 +39,11 @@ namespace ViVenty.Domain.Concrete
                 foreach (var line in cart.Lines)
                 {
                     var subtotal = line.Hsuit.Price * line.Quantity;
-                    body.AppendFormat("{0} x {1} (итого: {2:c})\n",
+                    body.AppendFormat("{0} x {1} (итого: {2} р.)\n",
                         line.Quantity, line.Hsuit.Name, subtotal);
                 }
 
-                body.AppendFormat("Общая стоимость: {0:c}\n", cart.ComputeTotalValue()).
+                body.AppendFormat("Общая стоимость: {0} р.\n", cart.ComputeTotalValue()).
                     AppendLine("---------------------------------------").
                     AppendLine("Доставка:").
                     AppendLine(order.Name).
@@ -49,18 +55,21 @@ namespace ViVenty.Domain.Concrete
                 mailMessage.Subject = MailSubject;
                 mailMessage.Body = body.ToString();
 
-                smtpClient.Send(mailMessage);
+                smtpClient.Send(mailMessage); 
             }
         }
 
         public void SendOrderDetailsToClient(Cart cart, Order order)
         {
-            MailTo = new MailAddress(order.Email, order.Name);
-            MailFrom = new MailAddress("a88236@gmail.com", "ViVenty Aqua Web Store");
-            MailSubject = "Ваш заказ номер " + order.Id + " принят";
-
-            using (var smtpClient = new SmtpClient())
+            using (SmtpClient smtpClient = new SmtpClient())
             {
+                var smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
+                smtpClient.Credentials = new NetworkCredential(smtpSection.Network.UserName, smtpSection.Network.Password);
+
+                MailTo = new MailAddress(order.Email, order.Name);
+                MailFrom = new MailAddress("aidar_ahmetshin@mail.ru", "ViVenty Aqua Web Store");
+                MailSubject = "Ваш заказ номер " + order.Id + " принят";
+
 
                 StringBuilder body = new StringBuilder().
                     AppendLine("Ваш заказ номер " + order.Id + " принят").
@@ -70,11 +79,11 @@ namespace ViVenty.Domain.Concrete
                 foreach (var line in cart.Lines)
                 {
                     var subtotal = line.Hsuit.Price * line.Quantity;
-                    body.AppendFormat("{0} x {1} (итого: {2:c})\n",
+                    body.AppendFormat("{0} x {1} (итого: {2} р.)\n",
                         line.Quantity, line.Hsuit.Name, subtotal);
                 }
 
-                body.AppendFormat("Общая стоимость: {0:c}\n", cart.ComputeTotalValue()).
+                body.AppendFormat("Общая стоимость: {0} р.\n", cart.ComputeTotalValue()).
                     AppendLine("---------------------------------------").
                     AppendLine("Доставка:").
                     AppendLine(order.Name).
@@ -88,10 +97,8 @@ namespace ViVenty.Domain.Concrete
                 mailMessage.Subject = MailSubject;
                 mailMessage.Body = body.ToString();
 
-                smtpClient.Send(mailMessage);
+                smtpClient.Send(mailMessage); 
             }
-            
-
         }
     }
 }

@@ -116,7 +116,7 @@ namespace ViVenty.UnitTests
             //Setup - create of Cart and CartController
 
             Cart cart = new Cart();
-            CartController controller = new CartController(mock.Object, null);
+            CartController controller = new CartController(mock.Object, null, null);
 
             //Action - add element to cart
 
@@ -142,7 +142,7 @@ namespace ViVenty.UnitTests
 
             Cart cart = new Cart();
 
-            CartController controller = new CartController(repo.Object, null);
+            CartController controller = new CartController(repo.Object, null, null);
 
             // Action - Add object to cart
             RedirectToRouteResult result = controller.AddToCart(cart, 1, "backToShop");
@@ -157,7 +157,7 @@ namespace ViVenty.UnitTests
         {
             //Setup - create Cart and CartController
             Cart cart = new Cart();
-            CartController controller = new CartController(null, null);
+            CartController controller = new CartController(null, null, null);
 
             //Action - call of Index method
 
@@ -177,7 +177,7 @@ namespace ViVenty.UnitTests
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             Cart cart = new Cart();
             ShippingDetails shippingDetails = new ShippingDetails();
-            CartController controller = new CartController(null, mock.Object);
+            CartController controller = new CartController(null, mock.Object, null);
 
             //Action
             ViewResult result = controller.Checkout(cart, shippingDetails);
@@ -202,7 +202,7 @@ namespace ViVenty.UnitTests
             Cart cart = new Cart();
             cart.AddItem(new Hsuit(), 1);
 
-            CartController controller = new CartController(null, mock.Object);
+            CartController controller = new CartController(null, mock.Object, null);
 
             //Add error in model
 
@@ -231,7 +231,7 @@ namespace ViVenty.UnitTests
             Cart cart = new Cart();
             cart.AddItem(new Hsuit(), 1);
 
-            CartController controller = new CartController(null, mock.Object);
+            CartController controller = new CartController(null, mock.Object, null);
 
             //Action - Try to make order
             ViewResult result = controller.Checkout(cart, new ShippingDetails());

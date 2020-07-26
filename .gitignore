@@ -1,3 +1,9 @@
 Косяки.txt
-ViVenty.Domain/Concrete/EmailOrderProcessor.cs
-ViVenty.WebUI\Web.config
+ViVenty.WebUI/Web.config
+ViVenty.Domain/bin
+ViVenty.Domain/obj
+ViVenty.WebUI/bin
+ViVenty.WebUI/obj
+ViVenty.UnitTests/bin/
+ViVenty.UnitTests/obj
+.vs
