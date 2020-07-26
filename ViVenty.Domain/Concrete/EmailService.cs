@@ -23,8 +23,7 @@ namespace ViVenty.Domain.Concrete
         {
             using (SmtpClient smtpClient = new SmtpClient())
             {
-                var smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
-                smtpClient.Credentials = new NetworkCredential(smtpSection.Network.UserName, smtpSection.Network.Password);
+                GetSmtpClientCredentials(smtpClient);
 
                 MailTo = new MailAddress("a88236 @gmail.com", "Admin");
                 MailFrom = new MailAddress("aidar_ahmetshin@mail.ru", "ViVenty Aqua Web Store");
@@ -63,8 +62,7 @@ namespace ViVenty.Domain.Concrete
         {
             using (SmtpClient smtpClient = new SmtpClient())
             {
-                var smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
-                smtpClient.Credentials = new NetworkCredential(smtpSection.Network.UserName, smtpSection.Network.Password);
+                GetSmtpClientCredentials(smtpClient);
 
                 MailTo = new MailAddress(order.Email, order.Name);
                 MailFrom = new MailAddress("aidar_ahmetshin@mail.ru", "ViVenty Aqua Web Store");
@@ -97,8 +95,14 @@ namespace ViVenty.Domain.Concrete
                 mailMessage.Subject = MailSubject;
                 mailMessage.Body = body.ToString();
 
-                smtpClient.Send(mailMessage); 
+                smtpClient.Send(mailMessage);
             }
+        }
+
+        private static void GetSmtpClientCredentials(SmtpClient smtpClient)
+        {
+            var smtpSection = (SmtpSection)ConfigurationManager.GetSection("system.net/mailSettings/smtp");
+            smtpClient.Credentials = new NetworkCredential(smtpSection.Network.UserName, smtpSection.Network.Password);
         }
     }
 }
