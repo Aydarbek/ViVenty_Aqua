@@ -3,11 +3,26 @@
 @model HsuitDetailsModel
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = Model.Hsuit.Name;
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Model.Hsuit.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            $(p_0).click(function () {
+                console.log("click p_0");
+                $('#mainImage').attr("src", "/Images/@Model.p_0.Image" );
+            });
+
+            $(p_1).click(function () {
+                console.log("click p_1");
+                $('#mainImage').attr("src", "/Images/@Model.p_1.Image" );
+            });
+        });
+    </script>
 
 <div id="categories" class="col-md-2">
     @Html.Action("Menu", "Nav")
@@ -20,9 +35,11 @@
             <span class="pull-right label label-primary">@Model.Hsuit.Price.ToString("# руб")</span>
         </h3>
     </div>
-    <div>
-        <p><img src="~/Images/@Model.MainPhoto.Image" width="400" height="600" /></p>
+
+    <div id="mainPhoto" class="mainPhoto">
+        <p><img id="mainImage" src="~/Images/@Model.MainPhoto.Image" width="400" height="600" /></p>
     </div>
+
     @using (Html.BeginForm("AddToCart", "Cart"))
     {
         <div class="pull-right">
@@ -40,20 +57,9 @@
 <div class="col-md-1">
     @foreach (var f in Model.Photos)
     {
-        if (@f.Nr == Model.MainPhoto.Nr)
-        {
-            <div style="border:solid;border-width:2px;border-color:lightgreen;">
-                <a href="~/hsuit/model/@Model.Hsuit.Id/@f.Nr"><img style="margin:5px" src="~/Images/@f.Image" width="85" height="129" /></a>
-            </div>
-        }
-
-        else
-        {
-            <div>
-                <a href="~/hsuit/model/@Model.Hsuit.Id/@f.Nr"><img style="margin:5px" src="~/Images/@f.Image" width="85" height="129" /></a>
-            </div>
-        }
-
+        <div>
+            <p><img id ="p_@f.Nr" style="margin:5px" src="/Images/@f.Image" width="85" height="129" /></p>
+        </div>
     }
 </div>
 

@@ -51,7 +51,9 @@ namespace ViVenty.WebUI.Controllers
             {
                 Hsuit = repository.Hsuits.First(h => h.Id == Id),
                 Photos = repository.Photos.Where(f => f.hsuit.Id == Id),
-                MainPhoto = repository.Photos.First(p => p.hsuit.Id == Id & p.Nr == Nr)
+                MainPhoto = repository.Photos.First(p => p.hsuit.Id == Id & p.Nr == Nr),
+                p_0 = repository.Photos.First(p => p.hsuit.Id == Id & p.Nr == 0),
+                p_1 = repository.Photos.First(p => p.hsuit.Id == Id & p.Nr == 1)
             };
 
             return View(HsuitModel);

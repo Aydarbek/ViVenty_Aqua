@@ -37,17 +37,8 @@ namespace ViVenty.WebUI.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IViventyRepository>().To<EFViventyRepository>();
-
-            /*           EmailSettings emailSettings = new EmailSettings
-                       {
-                           WriteAsFile = bool.Parse(ConfigurationManager.
-                           AppSettings["Email.WriteAsFile"] ?? "false")
-                       }; */
-
             kernel.Bind<IEmailService>().To<EmailService>();
-
             kernel.Bind<IOrderProcessor>().To<OrderProcessor>();
-
         }
     }
 }
