@@ -5,14 +5,14 @@ namespace ViVenty.Domain.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ViVenty.Domain.Concrete.DBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ViVenty.Domain.Concrete.ViventyContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ViVenty.Domain.Concrete.DBContext context)
+        protected override void Seed(ViVenty.Domain.Concrete.ViventyContext context)
         {
             //  This method will be called after migrating to the latest version.
 

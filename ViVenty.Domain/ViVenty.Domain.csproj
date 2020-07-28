@@ -82,8 +82,9 @@
   <ItemGroup>
     <Compile Include="Abstract\IEmailService.cs" />
     <Compile Include="Abstract\IOrderProcessor.cs" />
+    <Compile Include="Concrete\DbInitializer.cs" />
     <Compile Include="Concrete\EFViventyRepository.cs" />
-    <Compile Include="Concrete\DBContext.cs" />
+    <Compile Include="Concrete\ViventyContext.cs" />
     <Compile Include="Concrete\OrderProcessor.cs" />
     <Compile Include="Concrete\EmailService.cs" />
     <Compile Include="Entities\Cart.cs" />

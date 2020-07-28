@@ -10,7 +10,7 @@ namespace ViVenty.Domain.Concrete
 {
     public class EFViventyRepository : IViventyRepository
     {
-        DBContext context = new DBContext();
+        ViventyContext context = new ViventyContext();
         public IEnumerable<Hsuit> Hsuits
         {            
             get
