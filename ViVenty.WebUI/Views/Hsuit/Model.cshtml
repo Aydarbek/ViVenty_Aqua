@@ -3,26 +3,30 @@
 @model HsuitDetailsModel
 
 @{
-    /**/
-
     ViewBag.Title = Model.Hsuit.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <script type="text/javascript">
-        $(document).ready(function ()
-        {
-            $(p_0).click(function () {
-                console.log("click p_0");
-                $('#mainImage').attr("src", "/Images/@Model.p_0.Image" );
-            });
+<script type="text/javascript">
+function chooseImage(x)
+{
+    var i;
+    for (i = 0; i < @Model.Photos.Count; i++) {
+        console.log(x.toString());
 
-            $(p_1).click(function () {
-                console.log("click p_1");
-                $('#mainImage').attr("src", "/Images/@Model.p_1.Image" );
-            });
-        });
-    </script>
+        var photoId = "#p" + i;
+        if (i == x.toString()) {
+            $(photoId).attr("style", "border:solid;border-width:2px;border-color:lightgreen;margin:5px");
+        }
+        else {
+            $(photoId).attr("style", "margin:5px");
+        }
+    }
+
+    var image = $("#p"+x).attr("src");
+    $("#mainImage").attr("src", image);
+};
+</script>
 
 <div id="categories" class="col-md-2">
     @Html.Action("Menu", "Nav")
@@ -37,7 +41,7 @@
     </div>
 
     <div id="mainPhoto" class="mainPhoto">
-        <p><img id="mainImage" src="~/Images/@Model.MainPhoto.Image" width="400" height="600" /></p>
+        <p><img id="mainImage" src="~/Images/@Model.Photos[0].Image" width="400" height="600" /></p>
     </div>
 
     @using (Html.BeginForm("AddToCart", "Cart"))
@@ -55,11 +59,31 @@
 </div>
 
 <div class="col-md-1">
-    @foreach (var f in Model.Photos)
+    @foreach (var ph in Model.Photos)
     {
-        <div>
-            <p><img id ="p_@f.Nr" style="margin:5px" src="/Images/@f.Image" width="85" height="129" /></p>
-        </div>
+        if (ph.Nr == 0)
+        {
+            <div>
+                <img id="@("p"+ph.Nr)"  style="border: solid; border-width: 2px; border-color: lightgreen; margin: 5px" src="/Images/@ph.Image" width="85" height="130"/>                
+                <script type="text/javascript">
+                    $(@("p"+ph.Nr)).click(function () {
+                        chooseImage(@ph.Nr);
+                    });
+                </script>
+            </div>
+        }
+
+        else
+        {
+            <div>
+                <img id="@("p"+ph.Nr)" style="margin:5px" src="/Images/@ph.Image" width="85" height="130" />
+                <script type="text/javascript">
+                    $(@("p"+ph.Nr)).click(function () {
+                        chooseImage(@ph.Nr);
+                    });
+                </script>
+            </div>
+        }
     }
 </div>
 
