@@ -8,24 +8,28 @@
 }
 
 <script type="text/javascript">
-function chooseImage(x)
-{
-    var i;
-    for (i = 0; i < @Model.Photos.Count; i++) {
-        console.log(x.toString());
+function chooseImage(x) {
+        var i;
+        for (i = 0; i < @Model.Photos.Count; i++) {
+            console.log(x.toString());
 
-        var photoId = "#p" + i;
-        if (i == x.toString()) {
-            $(photoId).attr("style", "border:solid;border-width:2px;border-color:lightgreen;margin:5px");
+            var photoId = "#p" + i;
+            if (i == x.toString()) {
+                $(photoId).attr("style", "border:solid;border-width:2px;border-color:lightgreen;margin:5px");
+            }
+            else {
+                $(photoId).attr("style", "margin:5px");
+            }
         }
-        else {
-            $(photoId).attr("style", "margin:5px");
-        }
-    }
 
-    var image = $("#p"+x).attr("src");
-    $("#mainImage").attr("src", image);
-};
+        var image = $("#p"+x).attr("src");
+        $("#mainImage").attr("src", image);
+    };
+
+    $(document).ready( function() {
+        chooseImage(0);
+    });
+
 </script>
 
 <div id="categories" class="col-md-2">
@@ -41,7 +45,7 @@ function chooseImage(x)
     </div>
 
     <div id="mainPhoto" class="mainPhoto">
-        <p><img id="mainImage" src="~/Images/@Model.Photos[0].Image" width="400" height="600" /></p>
+        <img id="mainImage" width="400" height="600" />
     </div>
 
     @using (Html.BeginForm("AddToCart", "Cart"))
@@ -58,33 +62,19 @@ function chooseImage(x)
     </div>
 </div>
 
-<div class="col-md-1">
-    @foreach (var ph in Model.Photos)
-    {
-        if (ph.Nr == 0)
-        {
-            <div>
-                <img id="@("p"+ph.Nr)"  style="border: solid; border-width: 2px; border-color: lightgreen; margin: 5px" src="/Images/@ph.Image" width="85" height="130"/>                
-                <script type="text/javascript">
-                    $(@("p"+ph.Nr)).click(function () {
-                        chooseImage(@ph.Nr);
-                    });
-                </script>
-            </div>
-        }
 
-        else
+<div>
+    @foreach (var ph in Model.Photos)
         {
-            <div>
-                <img id="@("p"+ph.Nr)" style="margin:5px" src="/Images/@ph.Image" width="85" height="130" />
-                <script type="text/javascript">
-                    $(@("p"+ph.Nr)).click(function () {
-                        chooseImage(@ph.Nr);
-                    });
-                </script>
-            </div>
+        <div>
+            <img id="@("p"+ph.Nr)" style="margin:5px" src="/Images/@ph.Image" width="85" height="130" />
+            <script type="text/javascript">
+                $(@("p"+ph.Nr)).click(function () {
+                    chooseImage(@ph.Nr);
+                });
+            </script>
+        </div>
         }
-    }
 </div>
 
 
