@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Web.Mvc;
@@ -10,7 +9,6 @@ using ViVenty.WebUI.HtmlHelpers;
 using ViVenty.WebUI.Models;
 using System.Collections.Generic;
 using System.Linq;
-using ViVenty.WebUI.Models;
 
 namespace ViVenty.UnitTests
 {

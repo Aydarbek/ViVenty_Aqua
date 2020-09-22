@@ -3,11 +3,34 @@
 @model HsuitDetailsModel
 
 @{
-                /**/
-
-                ViewBag.Title = Model.Hsuit.Name;
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Model.Hsuit.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<script type="text/javascript">
+function chooseImage(x) {
+        var i;
+        for (i = 0; i < @Model.Photos.Count; i++) {
+            console.log(x.toString());
+
+            var photoId = "#p" + i;
+            if (i == x.toString()) {
+                $(photoId).attr("style", "border:solid;border-width:2px;border-color:lightgreen;margin:5px");
+            }
+            else {
+                $(photoId).attr("style", "margin:5px");
+            }
+        }
+
+        var image = $("#p"+x).attr("src");
+        $("#mainImage").attr("src", image);
+    };
+
+    $(document).ready( function() {
+        chooseImage(0);
+    });
+
+</script>
 
 <div id="categories" class="col-md-2">
     @Html.Action("Menu", "Nav")
@@ -20,15 +43,17 @@
             <span class="pull-right label label-primary">@Model.Hsuit.Price.ToString("# руб")</span>
         </h3>
     </div>
-    <div>
-        <p><img src="~/Images/@Model.MainPhoto.Image" width="400" height="600" /></p>
+
+    <div id="mainPhoto" class="mainPhoto">
+        <img id="mainImage" width="400" height="600" />
     </div>
+
     @using (Html.BeginForm("AddToCart", "Cart"))
     {
         <div class="pull-right">
             @Html.Hidden("Id", Model.Hsuit.Id)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-primary" value="В корзину" style="font-size:24px" />
+            <input type="submit" class="btn btn-success" value="В корзину" style="font-size:24px" />
         </div>
     }
     <div>
@@ -37,24 +62,19 @@
     </div>
 </div>
 
-<div class="col-md-1">
-    @foreach (var f in Model.Photos)
-    {
-        if (@f.Nr == Model.MainPhoto.Nr)
-        {
-            <div style="border:solid;border-width:2px;border-color:lightgreen;">
-                <a href="~/hsuit/model/@Model.Hsuit.Id/@f.Nr"><img style="margin:5px" src="~/Images/@f.Image" width="85" height="129" /></a>
-            </div>
-        }
 
-        else
+<div>
+    @foreach (var ph in Model.Photos)
         {
-            <div>
-                <a href="~/hsuit/model/@Model.Hsuit.Id/@f.Nr"><img style="margin:5px" src="~/Images/@f.Image" width="85" height="129" /></a>
-            </div>
+        <div>
+            <img id="@("p"+ph.Nr)" style="margin:5px" src="/Images/@ph.Image" width="85" height="130" />
+            <script type="text/javascript">
+                $(@("p"+ph.Nr)).click(function () {
+                    chooseImage(@ph.Nr);
+                });
+            </script>
+        </div>
         }
-
-    }
 </div>
 
 

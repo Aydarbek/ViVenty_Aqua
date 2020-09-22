@@ -9,8 +9,8 @@ namespace ViVenty.WebUI.Models
     public class HsuitDetailsModel
     {
         public Hsuit Hsuit { get; set; }
-        public IEnumerable<Photo> Photos { get; set; }
-        public Photo MainPhoto { get; set; }
-
+        public List<Photo> Photos { get; set; }
+        public Photo p_0 { get; set; }
+        public Photo p_1 { get; set; }
     }
 }

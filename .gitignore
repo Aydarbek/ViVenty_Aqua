@@ -1,5 +1,9 @@
 Косяки.txt
+DataBase/
+Image_sources/
+packages/
 ViVenty.WebUI/Web.config
+ViVenty.WebUI/Properties/
 ViVenty.Domain/bin
 ViVenty.Domain/obj
 ViVenty.WebUI/bin
