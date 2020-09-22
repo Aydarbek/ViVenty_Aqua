@@ -1,0 +1,14 @@
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (1, 'HSuit_1_0.jpg', 0);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (1, 'HSuit_1_1.jpg', 1);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (1, 'HSuit_1_2.jpg', 2);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (2, 'HSuit_2_0.jpg', 0);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (2, 'HSuit_2_1.jpg', 1);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (2, 'HSuit_2_2.jpg', 2);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (3, 'HSuit_3_0.jpg', 0);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (3, 'HSuit_3_1.jpg', 1);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (4, 'SwSuit_4_0.jpg', 0);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (4, 'SwSuit_4_1.jpg', 1);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (5, 'SwSuit_5_0.jpg', 0);
+INSERT INTO Photos (hsuit_Id, Image, Nr) VALUES (5, 'SwSuit_5_1.jpg', 1);
+
+<add name="ViVenty.Domain.Concrete.ViventyContext" connectionString="Server=localhost;Database=u1109783_viventyDb;User Id=u1109783_vivuser;Password=Bp7of59$;MultipleActiveResultSets=true" providerName="System.Data.SqlClient" />
