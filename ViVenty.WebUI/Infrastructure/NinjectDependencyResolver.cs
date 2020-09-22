@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using Moq;
 using Ninject;
-
 using ViVenty.Domain.Abstract;
 using ViVenty.Domain.Entities;
 using ViVenty.Domain.Concrete;
