@@ -45,10 +45,6 @@ namespace ViVenty.UnitTests
             Assert.AreEqual(hsuits[0].Name, "Тестовый объект4");
             Assert.AreEqual(hsuits[1].Name, "Тестовый объект5");
             Assert.AreEqual(hsuits[2].Name, "Тестовый объект6");
-
-
-
-
         }
 
         [TestMethod]
@@ -196,7 +192,6 @@ namespace ViVenty.UnitTests
             int result2 = ((HsuitListViewModel)(controller.List("Cat2")).Model).PagingInfo.TotalItems;
             int result3 = ((HsuitListViewModel)(controller.List("Cat3")).Model).PagingInfo.TotalItems;
             int resultAll = ((HsuitListViewModel)(controller.List(null)).Model).PagingInfo.TotalItems;
-
 
             Assert.AreEqual(result1, 3);
             Assert.AreEqual(result2, 2);

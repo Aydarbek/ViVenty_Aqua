@@ -17,6 +17,9 @@ namespace ViVenty.UnitTests
         Hsuit hsuit2 = new Hsuit { Id = 2, Name = "Тестовый объект2", Price = 6000 };
         Hsuit hsuit3 = new Hsuit { Id = 3, Name = "Тестовый объект3", Price = 5500 };
         Hsuit hsuit4 = new Hsuit { Id = 4, Name = "Тестовый объект4", Price = 5700 };
+        Mock<IOrderProcessor> orderProcessor = new Mock<IOrderProcessor>();
+        Mock<IEmailService> mailService = new Mock<IEmailService>();
+        Mock<IViventyRepository> repo = new Mock<IViventyRepository>();
 
         [TestMethod]
         public void Can_Add_New_Lines()
@@ -116,7 +119,7 @@ namespace ViVenty.UnitTests
             //Setup - create of Cart and CartController
 
             Cart cart = new Cart();
-            CartController controller = new CartController(mock.Object, null, null);
+            CartController controller = new CartController(mock.Object, orderProcessor.Object, mailService.Object);
 
             //Action - add element to cart
 
@@ -134,7 +137,6 @@ namespace ViVenty.UnitTests
         {
             //Setup - Create of repository imitation, Cart, CartController
 
-            Mock<IViventyRepository> repo = new Mock<IViventyRepository>();
             repo.Setup(h => h.Hsuits).Returns(new List<Hsuit>
             {
                 new Hsuit {Id = 1, Name = "Hsuit1", Category = "cat1" }
@@ -142,7 +144,7 @@ namespace ViVenty.UnitTests
 
             Cart cart = new Cart();
 
-            CartController controller = new CartController(repo.Object, null, null);
+            CartController controller = new CartController(repo.Object, orderProcessor.Object, mailService.Object);
 
             // Action - Add object to cart
             RedirectToRouteResult result = controller.AddToCart(cart, 1, "backToShop");
@@ -157,7 +159,7 @@ namespace ViVenty.UnitTests
         {
             //Setup - create Cart and CartController
             Cart cart = new Cart();
-            CartController controller = new CartController(null, null, null);
+            CartController controller = new CartController(repo.Object, orderProcessor.Object, mailService.Object);
 
             //Action - call of Index method
 
@@ -174,16 +176,15 @@ namespace ViVenty.UnitTests
         public void Cannot_Checkout_Empty_Cart()
         {
             //Setup - create of OrderProcessor imitation, empty Cart, ShippingDetails and CartController
-            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             Cart cart = new Cart();
             ShippingDetails shippingDetails = new ShippingDetails();
-            CartController controller = new CartController(null, mock.Object, null);
+            CartController controller = new CartController(repo.Object, orderProcessor.Object, mailService.Object);
 
             //Action
             ViewResult result = controller.Checkout(cart, shippingDetails);
 
             //Assert - check that order was not processed
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never);
+            orderProcessor.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never);
 
             //Assert - check that method returned standart View
             Assert.AreEqual("", result.ViewName);
@@ -198,11 +199,10 @@ namespace ViVenty.UnitTests
         {
             //Setup - create of imitation of order processor, cart, controller
 
-            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             Cart cart = new Cart();
             cart.AddItem(new Hsuit(), 1);
 
-            CartController controller = new CartController(null, mock.Object, null);
+            CartController controller = new CartController(repo.Object, orderProcessor.Object, mailService.Object);
 
             //Add error in model
 
@@ -212,7 +212,7 @@ namespace ViVenty.UnitTests
             ViewResult result = controller.Checkout(cart, new ShippingDetails());
 
             //Assert - check that order not transfer to order processor
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never());
+            orderProcessor.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never());
 
             //Assert - check that method returned standart View
             Assert.AreEqual("", result.ViewName);
@@ -227,17 +227,18 @@ namespace ViVenty.UnitTests
         {
             //Setup - create of imitation of order processor, cart, controller
 
-            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             Cart cart = new Cart();
             cart.AddItem(new Hsuit(), 1);
 
-            CartController controller = new CartController(null, mock.Object, null);
+            orderProcessor.Setup(o => o.order).Returns(new Order());
+
+            CartController controller = new CartController(repo.Object, orderProcessor.Object, mailService.Object);
 
             //Action - Try to make order
             ViewResult result = controller.Checkout(cart, new ShippingDetails());
 
             //Assert - checking that order was transfered to OrderProcessor
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Once());
+            orderProcessor.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Once());
 
             //Assert - checking that method returns View
             Assert.AreEqual("Completed", result.ViewName);
